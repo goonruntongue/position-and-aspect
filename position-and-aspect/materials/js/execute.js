@@ -46,8 +46,10 @@ step4Slider.addEventListener("input", function() {
     paddingValue.innerText = this.value;
     if (this.value != 0) {
         document.querySelector(".container").classList.add("isPryOpen");
+        document.querySelector("footer").style.position = "static";
     } else {
         document.querySelector(".container").classList.remove("isPryOpen");
+        document.querySelector("footer").style.position = "absolute";
     }
 });
 let step5Btn = document.querySelector("#step5");
