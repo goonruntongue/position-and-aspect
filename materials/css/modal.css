@@ -1,0 +1,177 @@
+/* Layout */
+
+.modal {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-size: 0.8em;
+    background: rgb(0 0 0 / 65%);
+    color: #fff;
+    padding: 1.5em;
+    border-radius: 6px;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.top-bar {
+    background: rgb(37, 37, 37);
+    height: 32px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+    border-radius: 6px 6px 0 0;
+    cursor: move;
+}
+
+.modal-wrap {
+    height: 100vh;
+    width: min(960px, 90%);
+    top: 40%;
+    left: 14.5%;
+    position: absolute;
+}
+
+.modal h1 {
+    margin: 0;
+}
+
+p.read {
+    padding-bottom: 2em;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 2em;
+}
+
+
+/* Hamburger Switch */
+
+.ham {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.ham span {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 5px;
+    border-radius: 20px;
+    background: #fff;
+    left: 1px;
+    transition: 0.25s;
+    transform-origin: center;
+}
+
+.ham span:first-of-type {
+    top: calc(16px - 5px / 2 - 6px);
+}
+
+.ham span:last-of-type {
+    top: calc(16px - 5px / 2 + 6px);
+}
+
+.ham.open span {
+    top: calc(16px - 5px / 2);
+}
+
+.ham.open span:first-of-type {
+    transform: rotate(45deg);
+}
+
+.ham.open span:last-of-type {
+    transform: rotate(-45deg);
+}
+
+.modal {
+    display: none;
+    opacity: 0;
+}
+
+.modal.open {
+    display: block;
+    animation: fadeIn 1s 1 forwards;
+}
+
+.top-bar {
+    width: 32px;
+    transition: 0.3s;
+    border-radius: 4px;
+    padding: 1px;
+    transform: translateX(80vw);
+}
+
+.top-bar.open {
+    width: 100%;
+    transform: translateX(0);
+    padding: 0;
+}
+
+.top-bar .ham {
+    right: 0 !important;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Scroll Bar */
+
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+
+
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #26272B #DFE9EB;
+}*/
+
+
+/* Chrome, Edge and Safari */
+
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+    transform: translateX(-5px);
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-track:active {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #26272B;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #5558A3;
+    border: 1px solid #fff;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #3947A3;
+}

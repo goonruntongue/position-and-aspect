@@ -1,0 +1,194 @@
+body,
+pre {
+    font-family: "Poppins", "Noto Sans JP", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    border: 2px dashed #333;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+.img-base {
+    width: min(60%, 500px);
+    height: auto;
+}
+
+.img-red {
+    width: min(150px, 20%);
+    height: auto;
+}
+
+.img-blue {
+    width: min(150px, 20%);
+    height: auto;
+}
+
+label,
+summary {
+    user-select: none;
+    cursor: pointer;
+}
+
+details {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+summary {
+    font-size: 0.9em;
+}
+
+.step-wrap {
+    counter-increment: cnt;
+    font-size: 1.2em;
+}
+
+.step-wrap::before {
+    font-size: 0.8em !important;
+    content: counter(cnt);
+    display: inline-flex;
+    color: #232323;
+    background: #ffffff;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.pre {
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+pre.prettyprint {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+pre.prettyprint ol {
+    padding-left: 1em;
+}
+
+pre.prettyprint li:nth-of-type(even) {
+    background: #111;
+}
+
+pre.prettyprint li {
+    list-style: decimal !important;
+}
+
+div.step-wrap:not(:first-of-type) {
+    margin-top: 1.3em;
+}
+
+.t50 {
+    opacity: 0.3;
+}
+
+input[type="range"] {
+    cursor: pointer;
+}
+
+.range-box {
+    padding-left: 1em;
+    margin: 0.5em 0 0;
+}
+
+
+/* with execute.js */
+
+@keyframes pulse {
+    0% {
+        border-color: coral
+    }
+    25% {
+        border-color: transparent
+    }
+    50% {
+        border-color: coral
+    }
+    75% {
+        border-color: transparent
+    }
+    100% {
+        border-color: coral
+    }
+}
+
+.container.pulse {
+    animation: pulse 1s 3 forwards;
+    border-width: 4px !important;
+}
+
+.container.hasAfter::after {
+    content: "これがafter疑似要素です";
+    text-align: right;
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    background: rgb(180, 152, 255);
+}
+
+html {
+    --pryValue: 0%;
+}
+
+.container.hasAfter.isPryOpen::after {
+    padding-top: var(--pryValue);
+    margin: 0;
+    /* content: ""; */
+    background: rgb(180, 152, 255);
+}
+
+
+/* img-base-expand */
+
+.img-base {
+    transition: 1s;
+}
+
+.img-base.expand {
+    width: 100%;
+    height: 100%;
+}
+
+.container.hasAfter.hasRemoveComment::after {
+    content: "";
+}
+
+.explain {
+    margin-top: 2em;
+}
+
+small {
+    display: block;
+    width: min(960px, 80%);
+    margin: 0 auto;
+    padding: 1em 0;
+    text-align: center;
+}
+
+div.qr {
+    width: min(64px, 50%);
+    margin: 0 auto;
+}
+
+.qr img {
+    width: 100%;
+}

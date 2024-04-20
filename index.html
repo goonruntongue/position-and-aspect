@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./materials/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="materials/css/style.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="materials/css/modal.css">
+    <title>ポジション指定とアスペクト比</title>
+</head>
+
+<body>
+    <div class="container">
+        <img src="materials/img/base.svg" class="img-base" alt="">
+        <img src="materials/img/red.svg" class="img-red" alt="">
+        <img src="materials/img/blue.svg" class="img-blue" alt="">
+    </div>
+    <div class="modal-wrap">
+        <div class="top-bar open">
+            <div class="ham open">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="modal open">
+            <h1>子要素のpadding-topの%指定は親要素の横幅に従う</h1>
+            <p class="read">ブロック要素の縦横比を固定するCSSハック</p>
+            <div class="step-wrap">
+                <label for="step1"><span>親要素</span>にposition:relative</label>
+                <input type="checkbox" id="step1">
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+div.container{
+    position:relative;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                <label for="step2"><span>子要素</span>にposition:absolute;ですべて浮かせる</label>
+                <input type="checkbox" id="step2">
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+div.container img{
+    position:absolute;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                <label for="step3"><span>疑似要素（after）</span>を作成する。ブロック要素として親要素と同じ横幅サイズとして指定）</label>
+                <input type="checkbox" id="step3">
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+div.container::after{
+    content:"";
+    display:block;
+    width:100%;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                <label for="step4"><span>作成した疑似要素のpadding-topを%指定します。（ここではbaseのイメージの縦横比と合わせるため40%指定が妥当です）</label>
+                <div class="range-box">padding-topの値
+                    <input type="range" id="step4" value="0" min="0" max="100" step="10" class="param-padding"><span class="step4val">0%</span>
+                </div>
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+div.container::after{
+    <span class="t50">content:"";
+    display:block;
+    width:100%;</span>
+    padding-top:<span class="padding-value">0</span>%;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                <label for="step5"><span>ベース画像の幅、高さを親要素に合わせるために100%に指定します</label>
+                <input type="checkbox" id="step5">
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+img.base {
+    width:100%;
+    height:100%;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                <label for="step6"><span>丸い画像の幅を%で指定します。（高さは自動調整）</label>
+                <div class="range-box">
+                    幅
+                    <input type="range" id="step6" value="20" min="0" max="100" step="1" class="param-width"><span class="step6val">20%</span>
+                </div>
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+img.red,img.blue {
+    width:<span class="width-value">20</span>%;
+    height:auto;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                赤丸画像の位置を%で指定します。
+                <div class="range-box">
+                    <label for="step7"><span>上からの距離</span></label>
+                    <input type="range" id="step7" value="0" min="0" max="100" step="1" class="param-top"><span class="step7val">0%</span>
+                </div>
+                <div class="range-box">
+                    <label for="step8"><span>左からの距離</span></label>
+                    <input type="range" id="step8" value="0" min="0" max="100" step="1" class="param-left"><span class="step8val">0%</span>
+                </div>
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+img.red {
+    top:<span class="red-top-value">0</span>%;
+    left:<span class="red-left-value">0</span>%;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="step-wrap">
+                青丸画像の位置を%で指定します。
+                <div class="range-box">
+                    <label for="step9"><span>上からの距離</span></label>
+                    <input type="range" id="step9" value="0" min="0" max="100" step="1" class="param-top">
+                    <span class="step9val">0%</span>
+                </div>
+                <div class="range-box">
+                    <label for="step10"><span>左からの距離</span></label>
+                    <input type="range" id="step10" value="0" min="0" max="100" step="1" class="param-left">
+                    <span class="step10val">0%</span>
+                </div>
+                <details>
+                    <summary>コード</summary>
+                    <code>
+                    <pre class="prettyprint linenums lang-css">
+img.blue {
+    top:<span class="blue-top-value">0</span>%;
+    left:<span class="blue-left-value">0</span>%;
+}
+</pre>
+                </code>
+                </details>
+            </div>
+            <div class="explain">
+                ここまでの設定ができたら、ブラウザを縮めてみましょう。デバイス幅が変わっても位置がずれないポジション指定ができているはずです。
+            </div>
+        </div>
+    </div>
+    <footer>
+        <small>Katsuyori Murakami All.Rights.Reserved.</small>
+    </footer>
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Google Code Prettify-->
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+    <script src="materials/js/controllers.js "></script>
+    <script src="materials/js/execute.js"></script>
+</body>
+
+</html>
