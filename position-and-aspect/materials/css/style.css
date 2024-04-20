@@ -185,7 +185,7 @@ small {
 }
 
 div.qr {
-    width: min(64px, 50%);
+    width: min(128px, 50%);
     margin: 0 auto;
 }
 
