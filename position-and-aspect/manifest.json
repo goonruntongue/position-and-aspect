@@ -1,0 +1,13 @@
+{
+    "name": "position-and-aspect",
+    "short_name": "position-and-aspect",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#222222",
+    "icons": [{
+        "src": "app-icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }]
+}
